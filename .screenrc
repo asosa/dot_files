@@ -19,7 +19,3 @@ defscrollback 10240
 ## ^T U で UTF-8 / ^T E で EUC-JP を切り替え
 bind U eval "encoding utf-8" "!!!echo 'export LANG=en_US.UTF-8'"
 bind E eval "encoding euc" "!!!echo 'export LANG=ja_JP.EUC-JP'"
-
-## cygwin 文字化け対策          
-termcapinfo cygwin KJ=SJIS              
-defencoding SJIS
