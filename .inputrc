@@ -1,0 +1,7 @@
+# historical backward search with linehead string binded to up-key
+#
+"\e[A": history-search-backward
+
+# historical forward search with linehead string binded to down-key
+#
+"\e[B": history-search-forward
