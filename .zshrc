@@ -83,6 +83,7 @@ alias ls="ls -hF --color=auto"
 alias ll="ls -l"
 alias la="ll -A"
 alias cl="make -f ~/Makefile clean"
+alias sqlplus='rlwrap sqlplus'
 
 # history completion
 autoload history-search-end
