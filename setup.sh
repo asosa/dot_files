@@ -1,8 +1,6 @@
-#!/bin/bash
+#!/bin/sh
 
-exec_path=$(dirname $0)
-filenames=$(find $exec_path -maxdepth 1 -name '.*' | grep -v 'bzr')
+cd $(dirname $0)
+find `pwd` -maxdepth 1 -name '.*' | grep -v 'git' | xargs -I{} ln -fs {} $HOME
 
-for filename in ${filenames[@]}; do
-  ln -fs $filename $HOME
-done
+exit 0
