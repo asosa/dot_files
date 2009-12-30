@@ -52,6 +52,7 @@ set mouse=a      " use mouse everywhere
 set report=0     " tell us when anything is changed via :...
 set noerrorbells " don't make noise
 set fillchars=vert:\ ,stl:\ ,stlnc:\
+set guioptions=
 
 " Visual Cues
 set showmatch    " show matching brackets
@@ -97,12 +98,6 @@ let Tlist_Compart_Format = 1       " show small meny
 let Tlist_Exist_OnlyWindow = 1     " if you are the last, kill yourself
 let Tlist_File_Fold_Auto_Close = 0 " Do not close tags for other files
 let Tlist_Enable_Fold_Column = 0   " Do not show folding tree
-
-" Minibuf
-let g:miniBufExplMapWindowNavVim = 1
-let g:miniBufExplMapWindowNavArrows = 1
-let g:miniBufExplMapCTabSwitchBufs = 1
-let g:miniBufExplModSelTarget = 1
 
 " Enconding
 if &encoding !=# 'utf-8'
