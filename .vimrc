@@ -156,13 +156,9 @@ endif
 imap <C-j> <esc>
 nnoremap j gj
 nnoremap j gj
-"nnoremap <unique> fb :FuzzyFinderBuffer<CR>
-"nnoremap <unique> ff :FuzzyFinderFile<CR>
-"nnoremap <unique> fm :FuzzyFinderMruFile<CR>
-"nnoremap <unique> fc :FuzzyFinderMruCmd<CR>
-"nnoremap <unique> fd :FuzzyFinderDir<CR>
 
 " FuzzyFinder.vim
+let g:fuf_modesDisable = []
 nnoremap <Space>f f
 nnoremap <Space>F F
 nnoremap f <Nop>
