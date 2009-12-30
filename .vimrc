@@ -161,11 +161,22 @@ endif
 imap <C-j> <esc>
 nnoremap j gj
 nnoremap j gj
-nnoremap <unique> fb :FuzzyFinderBuffer<CR>
-nnoremap <unique> ff :FuzzyFinderFile<CR>
-nnoremap <unique> fm :FuzzyFinderMruFile<CR>
-nnoremap <unique> fc :FuzzyFinderMruCmd<CR>
-nnoremap <unique> fd :FuzzyFinderDir<CR>
+"nnoremap <unique> fb :FuzzyFinderBuffer<CR>
+"nnoremap <unique> ff :FuzzyFinderFile<CR>
+"nnoremap <unique> fm :FuzzyFinderMruFile<CR>
+"nnoremap <unique> fc :FuzzyFinderMruCmd<CR>
+"nnoremap <unique> fd :FuzzyFinderDir<CR>
+
+" FuzzyFinder.vim
+nnoremap <Space>f f
+nnoremap <Space>F F
+nnoremap f <Nop>
+nnoremap <silent> fb :<C-u>FufBuffer!<CR>
+nnoremap <silent> ff :<C-u>FufFile!<C-r>=expand('%:~:.')[:-1-len(expand('%:~:.:t'))]<CR><CR>
+nnoremap <silent> fm :<C-u>FufMruFile!<CR>
+nnoremap <silent> tb :<C-u>tabnew<CR>:tabmove<CR>:FufBuffer!<CR>
+nnoremap <silent> tf :<C-u>tabnew<CR>:tabmove<CR>:FufFile!<C-r>=expand('#:~:.')[:-1-len(expand('#:~:.:t'))]<CR><CR>
+nnoremap <silent> tm :<C-u>tabnew<CR>:tabmove<CR>:FufMruFile!<CR>
 
 " rails.vim
 let g:rails_level=4
