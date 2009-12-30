@@ -1,4 +1,4 @@
-export PATH=$PATH:/usr/kerberos/sbin:/usr/local/sbin:/sbin:/usr/sbin:$HOME/local/bin
+export PATH=$PATH:/usr/bin:/usr/local/bin:/usr/kerberos/sbin:/usr/local/sbin:/sbin:/usr/sbin:$HOME/local/bin
 export HOSTNAME=`hostname`
 export LANG=en_US.UTF-8
 export EDITOR=vim
