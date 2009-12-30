@@ -96,3 +96,6 @@ bindkey "^N" history-beginning-search-forward-end
 preexec () {
   [ ${STY} ] && echo -ne "\ek${1%% *}\e\\"
 }
+
+# cd 後に自動で ls
+function cd() { builtin cd $@ && ls;}
