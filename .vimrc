@@ -6,8 +6,8 @@ set cf                    " enable error files and error jumping
 filetype plugin indent on " Enable filetype-specific indenting and plugins
 set viminfo+=!            " make sure it can save viminfo
 set isk+=_,$,@,%,#,-      " none of these should be word dividers, so make them not be
-set backup
-set swapfile
+set nobackup
+set noswapfile
 set iminsert=0
 set imsearch=0
 
@@ -17,18 +17,12 @@ if has("win32")
   set guifont=MS_Gothic:h11:cSHIFTJIS
   set printfont=MS_Gothic:h11:cSHIFTJIS
   set printoptions=number:y
-  set backupdir=$HOME/vimfiles/vim_backup
-  set directory=$HOME/vimfiles/vim_swap
 elseif has('mac')
   set ffs=mac,unix,dos
   set guifont=Osaka一等幅:h14
-  set backupdir=$HOME/.vim/vim_backup
-  set directory=$HOME/.vim/vim_swap
 else
   set ffs=unix,dos,mac
   set guifontset=a14,r14,k14
-  set backupdir=$HOME/.vim/vim_backup
-  set directory=$HOME/.vim/vim_swap
 endif
 
 " Theme/Colors
@@ -196,3 +190,51 @@ autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 
 " functions
 command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
+
+filetype off
+" pathogen.vimによってbundle配下のpluginをpathに加える
+call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
+set helpfile=$VIMRUNTIME/doc/help.txt
+" ファイルタイプ判定をon
+filetype plugin on
+
+" Tell vim to remember certain things when we exit
+"  '10 : marks will be remembered for up to 10 previously edited files
+"  "100 : will save up to 100 lines for each register
+"  :20 : up to 20 lines of command-line history will be remembered
+"  % : saves and restores the buffer list
+"  n... : where to save the viminfo files
+set viminfo='10,\"100,:20,%,n~/.viminfo
+ 
+" when we reload, tell vim to restore the cursor to the saved position
+augroup JumpCursorOnEdit
+ au!
+ autocmd BufReadPost *
+ \ if expand("<afile>:p:h") !=? $TEMP |
+ \ if line("'\"") > 1 && line("'\"") <= line("$") |
+ \ let JumpCursorOnEdit_foo = line("'\"") |
+ \ let b:doopenfold = 1 |
+ \ if (foldlevel(JumpCursorOnEdit_foo) > foldlevel(JumpCursorOnEdit_foo - 1)) |
+ \ let JumpCursorOnEdit_foo = JumpCursorOnEdit_foo - 1 |
+ \ let b:doopenfold = 2 |
+ \ endif |
+ \ exe JumpCursorOnEdit_foo |
+ \ endif |
+ \ endif
+ " Need to postpone using "zv" until after reading the modelines.
+ autocmd BufWinEnter *
+ \ if exists("b:doopenfold") |
+ \ exe "normal zv" |
+ \ if(b:doopenfold > 1) |
+ \ exe "+".1 |
+ \ endif |
+ \ unlet b:doopenfold |
+ \ endif
+augroup END
+
+vmap <silent>sf        <Plug>SQLU_Formatter<CR> 
+nmap <silent>scl       <Plug>SQLU_CreateColumnList<CR> 
+nmap <silent>scd       <Plug>SQLU_GetColumnDef<CR> 
+nmap <silent>scdt      <Plug>SQLU_GetColumnDataType<CR> 
+nmap <silent>scp       <Plug>SQLU_CreateProcedure<CR> 
