@@ -84,6 +84,7 @@ alias ll="ls -l"
 alias la="ll -A"
 alias cl="make -f ~/Makefile clean"
 alias sqlplus='rlwrap sqlplus'
+alias sqlplus='rlwrap mongo'
 
 # history completion
 autoload history-search-end
