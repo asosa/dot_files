@@ -60,7 +60,7 @@ set noerrorbells " no noises
 set laststatus=2
 set linespace=0
 set showcmd
-set wrap
+set nowrap
 set list
 set listchars=tab:\|\ ,trail:.,extends:>,precedes:< " what to show when I hit :set list
 highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=white
