@@ -15,7 +15,7 @@ set imsearch=0
 if has("win32")
   set ffs=dos,unix,mac
   set guifont=MS_Gothic:h11:cSHIFTJIS
-  set printfont=MS_Gothic:h11:cSHIFTJIS
+  set printfont=MS_Gothic:h9:cSHIFTJIS
   set printoptions=number:y
 elseif has('mac')
   set ffs=mac,unix,dos

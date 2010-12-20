@@ -1,7 +1,7 @@
 source $VIMRUNTIME/mswin.vim
 behave mswin
 
-colorscheme metacosm
+colorscheme desert
 highlight Pmenu ctermbg=grey ctermfg=black
 highlight PmenuSel ctermbg=blue ctermfg=white
 highlight Pmenu guibg=grey guifg=black

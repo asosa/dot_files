@@ -83,8 +83,6 @@ alias ls="ls -hF --color=auto"
 alias ll="ls -l"
 alias la="ll -A"
 alias cl="make -f ~/Makefile clean"
-alias sqlplus='rlwrap sqlplus'
-alias sqlplus='rlwrap mongo'
 
 # history completion
 autoload history-search-end
@@ -100,3 +98,8 @@ preexec () {
 
 # cd 後に自動で ls
 function cd() { builtin cd $@ && ls;}
+
+# screen 自動起動
+if [ $TERM = "xterm" -o $SHLVL = '1' ] ; then
+  exec screen -xR
+fi
