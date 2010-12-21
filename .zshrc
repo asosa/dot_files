@@ -99,6 +99,8 @@ preexec () {
 # cd 後に自動で ls
 function cd() { builtin cd $@ && ls;}
 
+function mdie() { MDIE "$(cygpath -aw $1)" & }
+
 # screen 自動起動
 if [ $TERM = "xterm" -o $SHLVL = '1' ] ; then
   exec screen -xR
