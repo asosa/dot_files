@@ -1,7 +1,7 @@
 ## エスケープキーの設定
 escape ^Tt
 
-shell /usr/bin/zsh
+shell zsh
 
 ## ビジュアルベルを無効
 vbell off
