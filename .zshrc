@@ -103,5 +103,5 @@ function mdie() { MDIE "$(cygpath -aw $1)" & }
 
 # screen 自動起動
 if [ $TERM = "xterm" -o $SHLVL = '1' ] ; then
-  exec screen -xR
+  #exec screen -xR
 fi
