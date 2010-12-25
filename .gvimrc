@@ -17,3 +17,9 @@ let Grep_Shell_Quote_Char = '"'
 let Grep_Skip_Dirs = '.svn'
 let Grep_Skip_Dirs = '.bzr'
 let Grep_Skip_Files = '*.bak *~'
+
+nmap <C-v> <C-v>
+cmap <C-v> <C-v>
+
+nmap <C-a> <C-a>
+cmap <C-a> <C-a>

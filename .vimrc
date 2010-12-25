@@ -148,8 +148,7 @@ endif
 
 " key map
 imap <C-j> <esc>
-nnoremap j gj
-nnoremap j gj
+"nnoremap j gj
 
 " FuzzyFinder.vim
 let g:fuf_modesDisable = []
