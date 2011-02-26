@@ -1,6 +1,6 @@
 export PATH=$PATH:/usr/bin:/usr/local/bin:/usr/kerberos/sbin:/usr/local/sbin:/sbin:/usr/sbin:$HOME/local/bin:$HOME/bin
 export HOSTNAME=`hostname`
-export LANG=en_US.UTF-8
+export LANG=ja_JP.utf8
 export EDITOR=vim
 export SVN_EDITOR=vim
 export BZR_EDITOR=vim
