@@ -1,5 +1,6 @@
-export PATH=$PATH:/usr/bin:/usr/local/bin:/usr/kerberos/sbin:/usr/local/sbin:/sbin:/usr/sbin:$HOME/local/bin:$HOME/bin
+export PATH=/opt/local/libexec/gnubin:/opt/local/bin:/opt/local/sbin:$PATH:/usr/bin:/usr/local/bin:/usr/kerberos/sbin:/usr/local/sbin:/sbin:/usr/sbin:$HOME/local/bin:$HOME/bin
 export HOSTNAME=`hostname`
+export PERL_BADLANG=0
 export LANG=ja_JP.utf8
 export EDITOR=vim
 export SVN_EDITOR=vim

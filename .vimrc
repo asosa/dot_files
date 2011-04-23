@@ -19,7 +19,7 @@ if has("win32")
   set printoptions=number:y
 elseif has('mac')
   set ffs=mac,unix,dos
-  set guifont=Osaka一等幅:h14
+  set guifont=Monaco:h13
 else
   set ffs=unix,dos,mac
   set guifontset=a14,r14,k14
@@ -94,6 +94,12 @@ let Tlist_File_Fold_Auto_Close = 0 " Do not close tags for other files
 let Tlist_Enable_Fold_Column = 0   " Do not show folding tree
 
 " Enconding
+set ffs=unix,dos,mac  " 改行文字
+set encoding=utf-8    " デフォルトエンコーディング
+
+" 文字コード関連
+" from ずんWiki http://www.kawaz.jp/pukiwiki/?vim#content_1_7
+" 文字コードの自動認識
 if &encoding !=# 'utf-8'
   set encoding=japan
   set fileencoding=japan
@@ -101,13 +107,16 @@ endif
 if has('iconv')
   let s:enc_euc = 'euc-jp'
   let s:enc_jis = 'iso-2022-jp'
+  " iconvがeucJP-msに対応しているかをチェック
   if iconv("\x87\x64\x87\x6a", 'cp932', 'eucjp-ms') ==# "\xad\xc5\xad\xcb"
     let s:enc_euc = 'eucjp-ms'
     let s:enc_jis = 'iso-2022-jp-3'
+  " iconvがJISX0213に対応しているかをチェック
   elseif iconv("\x87\x64\x87\x6a", 'cp932', 'euc-jisx0213') ==# "\xad\xc5\xad\xcb"
     let s:enc_euc = 'euc-jisx0213'
     let s:enc_jis = 'iso-2022-jp-3'
   endif
+  " fileencodingsを構築
   if &encoding ==# 'utf-8'
     let s:fileencodings_default = &fileencodings
     let &fileencodings = s:enc_jis .','. s:enc_euc .',cp932'
@@ -127,10 +136,10 @@ if has('iconv')
       let &fileencodings = &fileencodings .','. s:enc_euc
     endif
   endif
+  " 定数を処分
   unlet s:enc_euc
   unlet s:enc_jis
 endif
-
 " 日本語を含まない場合は fileencoding に encoding を使うようにする
 if has('autocmd')
   function! AU_ReCheck_FENC()
