@@ -8,11 +8,14 @@ highlight Pmenu guibg=grey guifg=black
 highlight PmenuSel guibg=blue guifg=white
 
 " grep.vim
-let Grep_Path = 'C:\GnuWin32\bin\grep.exe'
-let Fgrep_Path = 'C:\GnuWin32\bin\grep.exe -F'
-let Egrep_Path = 'C:\GnuWin32\bin\grep.exe -E'
-let Grep_Find_Path = 'C:\GnuWin32\bin\find.exe'
-let Grep_Xargs_Path = 'C:\GnuWin32\bin\xargs.exe'
+" OS dependent
+if has("win32")
+  let Grep_Path = 'C:\GnuWin32\bin\grep.exe'
+  let Fgrep_Path = 'C:\GnuWin32\bin\grep.exe -F'
+  let Egrep_Path = 'C:\GnuWin32\bin\grep.exe -E'
+  let Grep_Find_Path = 'C:\GnuWin32\bin\find.exe'
+  let Grep_Xargs_Path = 'C:\GnuWin32\bin\xargs.exe'
+endif
 let Grep_Shell_Quote_Char = '"'
 let Grep_Skip_Dirs = '.svn'
 let Grep_Skip_Dirs = '.bzr'

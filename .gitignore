@@ -5,3 +5,4 @@
 .DS_Store
 *.sw[po]
 tags
+.vim/.netrwhist

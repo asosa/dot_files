@@ -158,6 +158,7 @@ endif
 " key map
 imap <C-j> <esc>
 "nnoremap j gj
+let mapleader=","
 
 " FuzzyFinder.vim
 let g:fuf_modesDisable = []
@@ -176,15 +177,15 @@ let g:rails_level=4
 let g:rails_default_file="config/database.yml"
 
 " grep.vim
-let Grep_Path             = '/bin/grep'
-let Fgrep_Path            = '/bin/grep -F'
-let Egrep_Path            = '/bin/grep -E'
-let Grep_Find_Path        = '/usr/bin/find'
-let Grep_Xargs_Path       = '/usr/bin/xargs'
+let Grep_Find_Use_Xargs = 0
 let Grep_Shell_Quote_Char = '"'
 let Grep_Skip_Dirs        = '.svn'
 let Grep_Skip_Dirs        = '.bzr'
 let Grep_Skip_Files       = '*.bak *~'
+" :Gb <args> でGrepBufferする
+command! -nargs=1 Gb :GrepBuffer <args>
+" カーソル下の単語をGrepBufferする
+nnoremap <C-g><C-b> :<C-u>GrepBuffer<Space><C-r><C-w><Enter>
 
 " FileType settings
 autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
