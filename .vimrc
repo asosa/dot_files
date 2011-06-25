@@ -66,6 +66,7 @@ set listchars=tab:\|\ ,trail:.,extends:>,precedes:< " what to show when I hit :s
 highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=white
 match ZenkakuSpace /　/
 set statusline=%n:\ %<%f\ %m%r%h%w[%{&fileformat}][%{has('multi_byte')&&\ &fileencoding!=''?&fileencoding:&encoding}]\ 0x%B=%b%=%l,%c\ %P
+let loaded_matchparen = 1
 
 " Indent
 set fo=tcrqn     " See Help (complex)
