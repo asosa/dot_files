@@ -11,6 +11,8 @@ defutf8 on
 defencoding utf8
 encoding utf-8 utf-8
 
+shell zsh
+
 ## 自動でデタッチする
 autodetach on
 
