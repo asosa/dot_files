@@ -6,3 +6,5 @@
 *.sw[po]
 tags
 .vim/.netrwhist
+doc/tags
+doc/tags-ja
