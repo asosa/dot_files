@@ -174,7 +174,7 @@ bindkey -m W eval 'stuff W' 'writebuf' 'exec sh -c "/usr/bin/pbcopy < /tmp/scree
 # |09/24 13:23:54 hostname 0 zsh  1 man  2 vim  3 tail  11 to... (load average)| <--- hardstatus
 # +----------------------------------------------------------------------------+
 
-caption always '%?%F%{= gW}%:%{= Kk}%?%2n%f%07=%t%='
+caption always '%?%F%{= bW}%:%{= Kk}%?%2n%f%07=%t%='
 #caption always "[%02c] $USER@$HOST %`%-w%{=b bw}%n %t%{-}%+w"
 #caption always "%?%F%{= wk}%:%{= ww}%?%-w%{=u Wk}%n %t%{-}%+w"
 # caption string description:
@@ -192,7 +192,7 @@ caption always '%?%F%{= gW}%:%{= Kk}%?%2n%f%07=%t%='
 #  %t         - title of current window
 #  %=         - truncation/padding point
 
-hardstatus alwayslastline '%m/%d %02c:%s %{= .g}%H%{-} %L=%-w%45L>%{=u g.}%n %t%{-}%+w %-17<%=%{= .y}(%l)'
+hardstatus alwayslastline '%m/%d %02c:%s %{= .g}%H%{-} %L=%-w%45L>%{=u b.}%n %t%{-}%+w %-17<%=%{= .y}(%l)'
 # hardstatus string description:
 #
 #  %m         - Two-letter month number
