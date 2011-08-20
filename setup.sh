@@ -1,6 +1,5 @@
 #!/bin/sh
 
-cd $(dirname $0)
-find `pwd` -maxdepth 1 -name '.*' | grep -v 'git' | xargs -I{} ln -fs {} $HOME
+work_dir=$(dirname $0)
+find `pwd` -maxdepth 1 -name '.*' | grep -v ".git$" | grep -v ".gitmodules" | grep -v ".gitignore" | xargs -I{} ln -fs {} $HOME
 
-exit 0
