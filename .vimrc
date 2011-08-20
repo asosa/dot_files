@@ -1,3 +1,11 @@
+filetype off
+" pathogen.vimによってbundle配下のpluginをpathに加える
+call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
+set helpfile=$VIMRUNTIME/doc/help.txt
+" ファイルタイプ判定をon
+filetype plugin indent on
+
 " General
 set nocompatible          " get out of horrible vi-compatible mode
 filetype on               " detect the type of file
@@ -26,14 +34,15 @@ else
 endif
 
 " Theme/Colors
+set t_Co=256
 set background=dark
 syntax on
-colorscheme desert
+"colorscheme desert
+colorscheme wombat256
 highlight Pmenu ctermbg=grey ctermfg=black
 highlight PmenuSel ctermbg=blue ctermfg=white
 highlight Pmenu guibg=grey guifg=black
 highlight PmenuSel guibg=blue guifg=white
-set t_Co=256
 
 " Vim UI
 set wildmenu     " turn on wild menu
@@ -201,14 +210,6 @@ autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 
 " functions
 command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
-
-filetype off
-" pathogen.vimによってbundle配下のpluginをpathに加える
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
-set helpfile=$VIMRUNTIME/doc/help.txt
-" ファイルタイプ判定をon
-filetype plugin on
 
 " Tell vim to remember certain things when we exit
 "  '10 : marks will be remembered for up to 10 previously edited files
