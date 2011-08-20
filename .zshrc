@@ -91,17 +91,18 @@ zle -N history-beginning-search-forward-end history-search-end
 bindkey "^P" history-beginning-search-backward-end
 bindkey "^N" history-beginning-search-forward-end
 
-# set name to screen
-preexec () {
-  [ ${STY} ] && echo -ne "\ek${1%% *}\e\\"
-}
-
 # cd 後に自動で ls
 function cd() { builtin cd $@ && ls;}
 
+# windows mdie
 function mdie() { MDIE "$(cygpath -aw $1)" & }
 
-# screen 自動起動
-if [ $TERM = "xterm" -o $SHLVL = '1' ] ; then
-  #exec screen -xR
+# screenの設定（実行中はコマンド名、実行後はディレクトリ名をcaptionに表示）
+if [ "$TERM" = "xterm-256color" ]; then
+  preexec() {
+    echo -ne "\ek#${1%% *}\e\\"
+  }
+  precmd() {
+    echo -ne "\ek$(basename $(pwd))\e\\"
+  }
 fi
