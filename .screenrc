@@ -143,9 +143,19 @@ termcapinfo xterm 'is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l'
 windowlist title  '%{u .g}Num Flags Title%=[0-9] select the number [movement] j,C-n:Down k,C-p:Up (C-)f:PageDown (C-)b:PageUp'
 windowlist string '%{.g}%3n %{.y}%f%09=%{dg} %t %='
 
-bindkey -m ' ' eval 'stuff \040' 'writebuf' 'exec sh -c "/usr/bin/pbcopy < /tmp/screen-exchange"'
-bindkey -m Y eval 'stuff Y' 'writebuf' 'exec sh -c "/usr/bin/pbcopy < /tmp/screen-exchange"'
-bindkey -m W eval 'stuff W' 'writebuf' 'exec sh -c "/usr/bin/pbcopy < /tmp/screen-exchange"'
+bufferfile '/tmp/screen-exchange'
+
+#bindkey -m ' ' eval 'stuff \040' 'writebuf' 'exec sh -c "/usr/bin/putclip < /tmp/screen-exchange"'
+#bindkey -m Y eval 'stuff Y' 'writebuf' 'exec sh -c "/usr/bin/putclip < /tmp/screen-exchange"'
+#bindkey -m W eval 'stuff W' 'writebuf' 'exec sh -c "/usr/bin/putclip < /tmp/screen-exchange"'
+
+#bindkey -m ' ' eval 'stuff \040' 'writebuf' 'exec sh -c "/usr/bin/pbcopy < /tmp/screen-exchange"'
+#bindkey -m Y eval 'stuff Y' 'writebuf' 'exec sh -c "/usr/bin/pbcopy < /tmp/screen-exchange"'
+#bindkey -m W eval 'stuff W' 'writebuf' 'exec sh -c "/usr/bin/pbcopy < /tmp/screen-exchange"'
+
+bindkey -m ' ' eval 'stuff \040' 'writebuf' 'exec sh -c "rclipw.sh"'
+bindkey -m Y eval 'stuff Y' 'writebuf' 'exec sh -c "rclipw.sh"'
+bindkey -m W eval 'stuff W' 'writebuf' 'exec sh -c "rclipw.sh"'
 
 # Give me some info at the bottom of each window and the bottom of screen like scrollable tabbed bar.
 # e.g.:
