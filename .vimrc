@@ -6,6 +6,11 @@ set helpfile=$VIMRUNTIME/doc/help.txt
 " ファイルタイプ判定をon
 filetype plugin indent on
 
+" key map
+imap <C-j> <esc>
+let mapleader=","
+set pastetoggle=<F2>
+
 " General
 set nocompatible          " get out of horrible vi-compatible mode
 filetype on               " detect the type of file
@@ -39,10 +44,6 @@ set background=dark
 syntax on
 "colorscheme desert
 colorscheme wombat256
-highlight Pmenu ctermbg=grey ctermfg=black
-highlight PmenuSel ctermbg=blue ctermfg=white
-highlight Pmenu guibg=grey guifg=black
-highlight PmenuSel guibg=blue guifg=white
 
 " Vim UI
 set wildmenu     " turn on wild menu
@@ -166,11 +167,6 @@ if exists('&ambiwidth')
   set ambiwidth=double
 endif
 
-" key map
-imap <C-j> <esc>
-"nnoremap j gj
-let mapleader=","
-
 " FuzzyFinder.vim
 let g:fuf_modesDisable = []
 nnoremap <Space>f f
@@ -182,10 +178,6 @@ nnoremap <silent> fm :<C-u>FufMruFile!<CR>
 nnoremap <silent> tb :<C-u>tabnew<CR>:tabmove<CR>:FufBuffer!<CR>
 nnoremap <silent> tf :<C-u>tabnew<CR>:tabmove<CR>:FufFile!<C-r>=expand('#:~:.')[:-1-len(expand('#:~:.:t'))]<CR><CR>
 nnoremap <silent> tm :<C-u>tabnew<CR>:tabmove<CR>:FufMruFile!<CR>
-
-" rails.vim
-let g:rails_level=4
-let g:rails_default_file="config/database.yml"
 
 " grep.vim
 let Grep_Find_Use_Xargs = 0
