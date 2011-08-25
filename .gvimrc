@@ -1,12 +1,6 @@
 source $VIMRUNTIME/mswin.vim
 behave mswin
 
-colorscheme desert
-highlight Pmenu ctermbg=grey ctermfg=black
-highlight PmenuSel ctermbg=blue ctermfg=white
-highlight Pmenu guibg=grey guifg=black
-highlight PmenuSel guibg=blue guifg=white
-
 " grep.vim
 " OS dependent
 if has("win32")
@@ -26,3 +20,10 @@ cmap <C-v> <C-v>
 
 nmap <C-a> <C-a>
 cmap <C-a> <C-a>
+
+if has('multi_byte_ime')
+  highlight Cursor guifg=NONE guibg=Green
+  highlight CursorIM guifg=NONE guibg=Red
+endif
+
+

@@ -1,7 +1,7 @@
 export PATH=/usr/local/bin:$PATH:/usr/bin:/usr/kerberos/sbin:/usr/local/sbin:/sbin:/usr/sbin:$HOME/local/bin:$HOME/bin
 export HOSTNAME=`hostname`
 export PERL_BADLANG=0
-export LANG=en_US.UTF-8
+#export LANG=en_US.UTF-8
 export EDITOR=vim
 export SVN_EDITOR=vim
 export BZR_EDITOR=vim

@@ -1,0 +1,10 @@
+ [core]
+        pager = lv -c
+	excludesfile = /home/asosa/.gitignore
+[gui]
+        encoding = utf-8
+[color]
+        diff = auto
+[user]
+        name = Akira Sosa
+        email = akirasosa@gmail.com

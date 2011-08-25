@@ -1,3 +1,16 @@
+filetype off
+" pathogen.vimによってbundle配下のpluginをpathに加える
+call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
+set helpfile=$VIMRUNTIME/doc/help.txt
+" ファイルタイプ判定をon
+filetype plugin indent on
+
+" key map
+imap <C-j> <esc>
+let mapleader=","
+set pastetoggle=<F2>
+
 " General
 set nocompatible          " get out of horrible vi-compatible mode
 filetype on               " detect the type of file
@@ -26,13 +39,11 @@ else
 endif
 
 " Theme/Colors
+set t_Co=256
 set background=dark
 syntax on
-colorscheme desert
-highlight Pmenu ctermbg=grey ctermfg=black
-highlight PmenuSel ctermbg=blue ctermfg=white
-highlight Pmenu guibg=grey guifg=black
-highlight PmenuSel guibg=blue guifg=white
+"colorscheme desert
+colorscheme wombat256
 
 " Vim UI
 set wildmenu     " turn on wild menu
@@ -156,11 +167,6 @@ if exists('&ambiwidth')
   set ambiwidth=double
 endif
 
-" key map
-imap <C-j> <esc>
-"nnoremap j gj
-let mapleader=","
-
 " FuzzyFinder.vim
 let g:fuf_modesDisable = []
 nnoremap <Space>f f
@@ -172,10 +178,6 @@ nnoremap <silent> fm :<C-u>FufMruFile!<CR>
 nnoremap <silent> tb :<C-u>tabnew<CR>:tabmove<CR>:FufBuffer!<CR>
 nnoremap <silent> tf :<C-u>tabnew<CR>:tabmove<CR>:FufFile!<C-r>=expand('#:~:.')[:-1-len(expand('#:~:.:t'))]<CR><CR>
 nnoremap <silent> tm :<C-u>tabnew<CR>:tabmove<CR>:FufMruFile!<CR>
-
-" rails.vim
-let g:rails_level=4
-let g:rails_default_file="config/database.yml"
 
 " grep.vim
 let Grep_Find_Use_Xargs = 0
@@ -200,14 +202,6 @@ autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 
 " functions
 command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
-
-filetype off
-" pathogen.vimによってbundle配下のpluginをpathに加える
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
-set helpfile=$VIMRUNTIME/doc/help.txt
-" ファイルタイプ判定をon
-filetype plugin on
 
 " Tell vim to remember certain things when we exit
 "  '10 : marks will be remembered for up to 10 previously edited files
@@ -248,3 +242,18 @@ nmap <silent>scl       <Plug>SQLU_CreateColumnList<CR>
 nmap <silent>scd       <Plug>SQLU_GetColumnDef<CR> 
 nmap <silent>scdt      <Plug>SQLU_GetColumnDataType<CR> 
 nmap <silent>scp       <Plug>SQLU_CreateProcedure<CR> 
+
+" Disable AutoComplPop.
+let g:acp_enableAtStartup = 0
+" Use neocomplcache.
+let g:neocomplcache_enable_at_startup = 1
+" Use smartcase.
+let g:neocomplcache_enable_smart_case = 1
+" Use camel case completion.
+let g:neocomplcache_enable_camel_case_completion = 1
+" Use underbar completion.
+let g:neocomplcache_enable_underbar_completion = 1
+" Set minimum syntax keyword length.
+let g:neocomplcache_min_syntax_length = 4
+let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*' 
+let g:neocomplcache_enable_auto_select = 1
