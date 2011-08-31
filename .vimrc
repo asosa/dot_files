@@ -32,7 +32,7 @@ if has("win32")
   set printoptions=number:y
 elseif has('mac')
   set ffs=mac,unix,dos
-  set guifont=Monaco:h13
+  set guifont=Monaco:h12
 else
   set ffs=unix,dos,mac
   set guifontset=a14,r14,k14
@@ -254,6 +254,7 @@ let g:neocomplcache_enable_camel_case_completion = 1
 " Use underbar completion.
 let g:neocomplcache_enable_underbar_completion = 1
 " Set minimum syntax keyword length.
-let g:neocomplcache_min_syntax_length = 4
+let g:neocomplcache_min_syntax_length = 1
 let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*' 
 let g:neocomplcache_enable_auto_select = 1
+

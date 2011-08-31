@@ -4,7 +4,7 @@ PBCOPY=/usr/bin/pbcopy
 PUTCLIP=/usr/bin/putclip
 SCREEN_EXCHANGE=/tmp/screen-exchange
 
-this_script=`readlink -f $0`
+this_script=`readlink $0`
 cd `dirname ${this_script}`
 
 rsync -a ${SCREEN_EXCHANGE} asosa@tr.asai24.com:${SCREEN_EXCHANGE}
