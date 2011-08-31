@@ -1,6 +1,6 @@
  [core]
         pager = lv -c
-	excludesfile = /home/asosa/.gitignore
+        excludesfile = ~/.gitignore
 [gui]
         encoding = utf-8
 [color]
