@@ -1,4 +1,4 @@
-export PATH=/usr/local/bin:$PATH:/usr/bin:/usr/kerberos/sbin:/usr/local/sbin:/sbin:/usr/sbin:$HOME/local/bin:$HOME/bin
+export PATH=/usr/local/bin:$PATH:/usr/bin:/usr/kerberos/sbin:/usr/local/sbin:/sbin:/usr/sbin:$HOME/local/bin:$HOME/bin:$HOME/node_modules/.bin
 export HOSTNAME=`hostname`
 export PERL_BADLANG=0
 #export LANG=en_US.UTF-8
