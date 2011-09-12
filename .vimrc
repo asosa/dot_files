@@ -260,3 +260,6 @@ let g:neocomplcache_min_syntax_length = 1
 let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*' 
 let g:neocomplcache_enable_auto_select = 1
 
+" syntastics
+let g:syntastic_enable_signs=1
+let g:syntastic_auto_loc_list=2
