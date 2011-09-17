@@ -199,8 +199,6 @@ autocmd FileType html set filetype=xhtml
 autocmd Filetype html set omnifunc=htmlcomplete#CompleteTags
 autocmd Filetype css set omnifunc=csscomplete#CompleteCSS
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-au BufEnter *.less set nocindent
-au BufLeave *.less set cindent
 
 " functions
 command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
