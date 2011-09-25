@@ -9,7 +9,9 @@ filetype plugin indent on
 " key map
 imap <C-j> <esc>
 let mapleader=","
-set pastetoggle=<F2>
+nnoremap <silent> cy ce<C-r>0<ESC>:let@/=@1<CR>:noh<CR>
+vnoremap <silent> cy c<C-r>0<ESC>:let@/=@1<CR>:noh<CR>
+nnoremap <silent> ciy ciw<C-r>0<ESC>:let@/=@1<CR>:noh<CR>
 
 " General
 set nocompatible          " get out of horrible vi-compatible mode
@@ -210,7 +212,7 @@ command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | di
 "  % : saves and restores the buffer list
 "  n... : where to save the viminfo files
 set viminfo='10,\"100,:20,%,n~/.viminfo
- 
+
 " when we reload, tell vim to restore the cursor to the saved position
 augroup JumpCursorOnEdit
  au!
@@ -237,11 +239,11 @@ augroup JumpCursorOnEdit
  \ endif
 augroup END
 
-vmap <silent>sf        <Plug>SQLU_Formatter<CR> 
-nmap <silent>scl       <Plug>SQLU_CreateColumnList<CR> 
-nmap <silent>scd       <Plug>SQLU_GetColumnDef<CR> 
-nmap <silent>scdt      <Plug>SQLU_GetColumnDataType<CR> 
-nmap <silent>scp       <Plug>SQLU_CreateProcedure<CR> 
+vmap <silent>sf        <Plug>SQLU_Formatter<CR>
+nmap <silent>scl       <Plug>SQLU_CreateColumnList<CR>
+nmap <silent>scd       <Plug>SQLU_GetColumnDef<CR>
+nmap <silent>scdt      <Plug>SQLU_GetColumnDataType<CR>
+nmap <silent>scp       <Plug>SQLU_CreateProcedure<CR>
 
 " Disable AutoComplPop.
 let g:acp_enableAtStartup = 0
@@ -255,7 +257,7 @@ let g:neocomplcache_enable_camel_case_completion = 1
 let g:neocomplcache_enable_underbar_completion = 1
 " Set minimum syntax keyword length.
 let g:neocomplcache_min_syntax_length = 1
-let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*' 
+let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 let g:neocomplcache_enable_auto_select = 1
 
 " syntastics
