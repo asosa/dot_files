@@ -12,6 +12,7 @@ let mapleader=","
 nnoremap <silent> cy ce<C-r>0<ESC>:let@/=@1<CR>:noh<CR>
 vnoremap <silent> cy c<C-r>0<ESC>:let@/=@1<CR>:noh<CR>
 nnoremap <silent> ciy ciw<C-r>0<ESC>:let@/=@1<CR>:noh<CR>
+:nnoremap <C-j><C-j> :nohlsearch<CR>
 
 " General
 set nocompatible          " get out of horrible vi-compatible mode
