@@ -13,6 +13,7 @@ nnoremap <silent> cy ce<C-r>0<ESC>:let@/=@1<CR>:noh<CR>
 vnoremap <silent> cy c<C-r>0<ESC>:let@/=@1<CR>:noh<CR>
 nnoremap <silent> ciy ciw<C-r>0<ESC>:let@/=@1<CR>:noh<CR>
 :nnoremap <C-j><C-j> :nohlsearch<CR>
+set pastetoggle=<C-E>
 
 " General
 set nocompatible          " get out of horrible vi-compatible mode
@@ -107,6 +108,17 @@ let Tlist_Compart_Format = 1       " show small meny
 let Tlist_Exist_OnlyWindow = 1     " if you are the last, kill yourself
 let Tlist_File_Fold_Auto_Close = 0 " Do not close tags for other files
 let Tlist_Enable_Fold_Column = 0   " Do not show folding tree
+
+" 新規ファイル保存時にディレクトリを作成する
+augroup vimrc-auto-mkdir  " {{{
+  autocmd!
+  autocmd BufWritePre * call s:auto_mkdir(expand('<afile>:p:h'))
+  function! s:auto_mkdir(dir)  " {{{
+    if !isdirectory(a:dir)
+      call mkdir(iconv(a:dir, &encoding, &termencoding), 'p')
+    endif
+  endfunction  " }}}
+augroup END  " }}}
 
 " Enconding
 set ffs=unix,dos,mac  " 改行文字
