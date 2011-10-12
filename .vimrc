@@ -285,3 +285,7 @@ nnoremap <silent> ,ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mr
 " syntastics
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=2
+
+" quickrun
+let g:quickrun_config = {}
+let g:quickrun_config['coffee'] = {'command' : 'coffee', 'exec' : ['%c -cbp %s']}
