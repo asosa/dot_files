@@ -61,3 +61,12 @@
 [submodule ".vim/bundle/scss-syntax.vim"]
 	path = .vim/bundle/scss-syntax.vim
 	url = git://github.com/cakebaker/scss-syntax.vim.git
+[submodule ".vim/bundle/nerdtree"]
+	path = .vim/bundle/nerdtree
+	url = git://github.com/scrooloose/nerdtree.git
+[submodule ".vim/bundle/vim-session"]
+	path = .vim/bundle/vim-session
+	url = git://github.com/xolox/vim-session.git
+[submodule ".vim/bundle/Specky"]
+	path = .vim/bundle/Specky
+	url = git://github.com/vim-scripts/Specky.git
