@@ -28,6 +28,8 @@ bind F eval 'scrollback 0' 'scrollback 1000' 'echo "scrollback buffer cleared"'
 # don't show startup message.
 startup_message off
 
+mousetrack on
+
 # don't remove windows from the window list as soon as window process exits.
 #zombie kr #  k: destory window, r: resurrect window
 
