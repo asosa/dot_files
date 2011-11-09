@@ -289,3 +289,6 @@ let g:syntastic_auto_loc_list=2
 " quickrun
 let g:quickrun_config = {}
 let g:quickrun_config['coffee'] = {'command' : 'coffee', 'exec' : ['%c -cbp %s']}
+
+" NNERDTree
+nnoremap <silent> <C-n> :NERDTreeToggle<CR>
