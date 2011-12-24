@@ -24,7 +24,7 @@ ZSH_THEME="tjkirch"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git brew vi-mode bundler gem git-flow heroku osx rails3 ruby rvm)
+plugins=(git brew vi-mode bundler gem git-flow heroku osx rails3 ruby rvm autojump)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -53,10 +53,6 @@ bindkey "^N" history-beginning-search-forward-end
 
 # alias
 alias mv="mv -i"
-alias pd="pushd"
-alias po="popd"
-alias la="ll -Ah"
-alias aa='ack-grep --pager="less -R"'
 
 # cd 後に自動で ls
 function cd() { builtin cd $@ && ls;}
