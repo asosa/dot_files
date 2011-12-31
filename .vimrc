@@ -273,15 +273,6 @@ let g:neocomplcache_min_syntax_length = 1
 let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 let g:neocomplcache_enable_auto_select = 1
 
-" unite.vim
-let g:unite_enable_start_insert=1
-nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
-nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
-nnoremap <silent> ,ur :<C-u>Unite -buffer-name=register register<CR>
-nnoremap <silent> ,um :<C-u>Unite file_mru<CR>
-nnoremap <silent> ,uu :<C-u>Unite buffer file_mru<CR>
-nnoremap <silent> ,ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
-
 " syntastics
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=2
@@ -292,3 +283,6 @@ let g:quickrun_config['coffee'] = {'command' : 'coffee', 'exec' : ['%c -cbp %s']
 
 " NNERDTree
 nnoremap <silent> <C-n> :NERDTreeToggle<CR>
+
+" ctrlp
+set wildignore+=*/.git/*,*/tmp/*,*/.sass-cache/*
