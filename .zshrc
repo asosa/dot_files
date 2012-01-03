@@ -57,12 +57,3 @@ alias mv="mv -i"
 # cd 後に自動で ls
 function cd() { builtin cd $@ && ls;}
 
-# screenの設定（実行中はコマンド名、実行後はディレクトリ名をcaptionに表示）
-if [ "$TERM" = "xterm-256color" ]; then
-  preexec() {
-    echo -ne "\ek#${1%% *}\e\\"
-  }
-  precmd() {
-    echo -ne "\ek$(basename $(pwd))\e\\"
-  }
-fi
