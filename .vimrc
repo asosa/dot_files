@@ -286,3 +286,6 @@ nnoremap <silent> <C-n> :NERDTreeToggle<CR>
 
 " ctrlp
 set wildignore+=*/.git/*,*/tmp/*,*/.sass-cache/*
+
+" rst
+command Rst :!rst2html.py % > /tmp/rstprev.html && open /tmp/rstprev.html
