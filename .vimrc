@@ -258,21 +258,6 @@ nmap <silent>scd       <Plug>SQLU_GetColumnDef<CR>
 nmap <silent>scdt      <Plug>SQLU_GetColumnDataType<CR>
 nmap <silent>scp       <Plug>SQLU_CreateProcedure<CR>
 
-" Disable AutoComplPop.
-let g:acp_enableAtStartup = 0
-" Use neocomplcache.
-let g:neocomplcache_enable_at_startup = 1
-" Use smartcase.
-let g:neocomplcache_enable_smart_case = 1
-" Use camel case completion.
-let g:neocomplcache_enable_camel_case_completion = 1
-" Use underbar completion.
-let g:neocomplcache_enable_underbar_completion = 1
-" Set minimum syntax keyword length.
-let g:neocomplcache_min_syntax_length = 1
-let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
-let g:neocomplcache_enable_auto_select = 1
-
 " syntastics
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=2
@@ -289,3 +274,13 @@ set wildignore+=*/.git/*,*/tmp/*,*/.sass-cache/*
 
 " rst
 command Rst :!rst2html.py % > /tmp/rstprev.html && open /tmp/rstprev.html
+
+" au
+let g:acp_behaviorRubyOmniMethodLength = 1
+let g:acp_behaviorRubyOmniSymbolLength = 1
+let g:acp_behaviorPythonOmniLength = 1
+let g:acp_behaviorXmlOmniLength = 1
+let g:acp_behaviorHtmlOmniLength = 1
+let g:acp_behaviorCssOmniPropertyLength = 1
+let g:acp_behaviorCssOmniValueLength = 1
+let g:acp_behaviorSnipmateLength = 1
