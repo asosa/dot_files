@@ -79,3 +79,6 @@
 [submodule ".vim/bundle/AutoComlPop"]
 	path = .vim/bundle/AutoComlPop
 	url = git://github.com/vim-scripts/AutoComplPop.git
+[submodule ".vim/bundle/mustache.vim"]
+	path = .vim/bundle/mustache.vim
+	url = git://github.com/juvenn/mustache.vim.git
