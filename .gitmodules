@@ -91,3 +91,6 @@
 [submodule ".vim/bundle/MultipleSearch"]
 	path = .vim/bundle/MultipleSearch
 	url = git://github.com/vim-scripts/MultipleSearch.git
+[submodule ".vim/bundle/sudo.vim"]
+	path = .vim/bundle/sudo.vim
+	url = git://github.com/vim-scripts/sudo.vim.git
