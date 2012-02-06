@@ -88,3 +88,6 @@
 [submodule ".vim/bundle/vim-ruby"]
 	path = .vim/bundle/vim-ruby
 	url = git://github.com/vim-ruby/vim-ruby.git
+[submodule ".vim/bundle/MultipleSearch"]
+	path = .vim/bundle/MultipleSearch
+	url = git://github.com/vim-scripts/MultipleSearch.git
