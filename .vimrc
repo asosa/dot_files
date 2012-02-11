@@ -1,9 +1,5 @@
-filetype off
-" pathogen.vimによってbundle配下のpluginをpathに加える
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
-set helpfile=$VIMRUNTIME/doc/help.txt
-" ファイルタイプ判定をon
+call pathogen#infect()
+syntax on
 filetype plugin indent on
 
 " key map
@@ -45,7 +41,6 @@ endif
 " Theme/Colors
 set t_Co=256
 set background=dark
-syntax on
 "colorscheme desert
 colorscheme wombat256
 
