@@ -1,6 +1,43 @@
-call pathogen#infect()
-syntax on
+set nocompatible
+filetype off
+
+set rtp+=~/.vim/vundle/
+call vundle#rc()
+
+Bundle 'Shougo/neocomplcache'
+Bundle 'cakebaker/scss-syntax.vim'
+Bundle 'edsono/vim-matchit'
+Bundle 'groenewege/vim-less'
+Bundle 'juvenn/mustache.vim'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'kien/ctrlp.vim'
+Bundle 'majutsushi/tagbar'
+Bundle 'mileszs/ack.vim'
+Bundle 'msanders/snipmate.vim'
+Bundle 'othree/html5.vim'
+Bundle 'pangloss/vim-javascript'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/syntastic'
+Bundle 'sukima/xmledit'
+Bundle 'thinca/vim-quickrun'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-repeat'
+Bundle 'tpope/vim-surround'
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'xolox/vim-session'
+
+Bundle 'Align'
+Bundle 'FuzzyFinder'
+Bundle 'L9'
+Bundle 'Specky'
+Bundle 'grep.vim'
+Bundle 'php.vim'
+Bundle 'sudo.vim'
+
 filetype plugin indent on
+syntax on
 
 " key map
 imap <C-j> <esc>
@@ -95,14 +132,6 @@ set foldmethod=indent " Make folding indent sensitive
 set foldlevel=100     " Don't autofold anything (but I can still fold manually)
 set foldopen-=search  " don't open folds when you search into them
 set foldopen-=undo    " don't open folds when you undo stuff
-
-" CTags
-let Tlist_Sort_Type = 'name'       " order by
-let Tlist_Use_Right_Window = 1     " split to the right side of the screen
-let Tlist_Compart_Format = 1       " show small meny
-let Tlist_Exist_OnlyWindow = 1     " if you are the last, kill yourself
-let Tlist_File_Fold_Auto_Close = 0 " Do not close tags for other files
-let Tlist_Enable_Fold_Column = 0   " Do not show folding tree
 
 " 新規ファイル保存時にディレクトリを作成する
 augroup vimrc-auto-mkdir  " {{{
@@ -286,3 +315,24 @@ let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 " AutoComplPop like behavior.
 let g:neocomplcache_enable_auto_select = 1
 
+" TagBar
+nmap <F8> :TagbarToggle<CR>
+
+" Add this type definition to your vimrc
+" or do
+" coffeetags --vim-conf >> <PATH TO YOUR VIMRC>
+" if you want your tags to include vars/objects do:
+" coffeetags --vim-conf --include-vars
+ let g:tagbar_type_coffee = {
+  \ 'kinds' : [
+  \   'f:functions',
+  \   'o:object'
+  \ ],
+  \ 'kind2scope' : {
+  \  'f' : 'object',
+  \   'o' : 'object'
+  \},
+  \ 'sro' : ".",
+  \ 'ctagsbin' : 'coffeetags',
+  \ 'ctagsargs' : ' ',
+  \}
