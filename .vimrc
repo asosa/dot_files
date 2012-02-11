@@ -1,9 +1,8 @@
+" Bundles
 set nocompatible
 filetype off
-
 set rtp+=~/.vim/vundle/
 call vundle#rc()
-
 Bundle 'Shougo/neocomplcache'
 Bundle 'cakebaker/scss-syntax.vim'
 Bundle 'edsono/vim-matchit'
@@ -27,7 +26,6 @@ Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'xolox/vim-session'
-
 Bundle 'Align'
 Bundle 'FuzzyFinder'
 Bundle 'L9'
@@ -36,7 +34,6 @@ Bundle 'Specky'
 Bundle 'grep.vim'
 Bundle 'php.vim'
 Bundle 'sudo.vim'
-
 filetype plugin indent on
 syntax on
 
@@ -223,7 +220,7 @@ nnoremap <silent> tm :<C-u>tabnew<CR>:tabmove<CR>:FufMruFile!<CR>
 let Grep_Find_Use_Xargs = 0
 let Grep_Shell_Quote_Char = '"'
 let Grep_Skip_Dirs        = '.svn'
-let Grep_Skip_Dirs        = '.bzr'
+let Grep_Skip_Dirs        = '.git'
 let Grep_Skip_Files       = '*.bak *~'
 " :Gb <args> でGrepBufferする
 command! -nargs=1 Gb :GrepBuffer <args>
@@ -277,6 +274,7 @@ augroup JumpCursorOnEdit
  \ endif
 augroup END
 
+" SQLUtilities
 vmap <silent>sf        <Plug>SQLU_Formatter<CR>
 nmap <silent>scl       <Plug>SQLU_CreateColumnList<CR>
 nmap <silent>scd       <Plug>SQLU_GetColumnDef<CR>
@@ -300,40 +298,28 @@ set wildignore+=*/.git/*,*/tmp/*,*/.sass-cache/*
 " rst
 command Rst :!rst2html.py % > /tmp/rstprev.html && open /tmp/rstprev.html
 
-" Disable AutoComplPop.
-let g:acp_enableAtStartup = 0
-" Use neocomplcache.
-let g:neocomplcache_enable_at_startup = 1
-" Use smartcase.
-let g:neocomplcache_enable_smart_case = 1
-" Use camel case completion.
-let g:neocomplcache_enable_camel_case_completion = 1
-" Use underbar completion.
-let g:neocomplcache_enable_underbar_completion = 1
-" Set minimum syntax keyword length.
-let g:neocomplcache_min_syntax_length = 3
+" neocomplcache
+let g:acp_enableAtStartup = 0                           " Disable AutoComplPop.
+let g:neocomplcache_enable_at_startup = 1               " Use neocomplcache.
+let g:neocomplcache_enable_smart_case = 1               " Use smartcase.
+let g:neocomplcache_enable_camel_case_completion = 1    " Use camel case completion.
+let g:neocomplcache_enable_underbar_completion = 1      " Use underbar completion.
+let g:neocomplcache_min_syntax_length = 3               " Set minimum syntax keyword length.
 let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
-" AutoComplPop like behavior.
-let g:neocomplcache_enable_auto_select = 1
+let g:neocomplcache_enable_auto_select = 1              " AutoComplPop like behavior.
 
 " TagBar
 nmap <F8> :TagbarToggle<CR>
-
-" Add this type definition to your vimrc
-" or do
-" coffeetags --vim-conf >> <PATH TO YOUR VIMRC>
-" if you want your tags to include vars/objects do:
-" coffeetags --vim-conf --include-vars
- let g:tagbar_type_coffee = {
-  \ 'kinds' : [
-  \   'f:functions',
-  \   'o:object'
-  \ ],
-  \ 'kind2scope' : {
-  \  'f' : 'object',
-  \   'o' : 'object'
-  \},
-  \ 'sro' : ".",
-  \ 'ctagsbin' : 'coffeetags',
-  \ 'ctagsargs' : ' ',
-  \}
+let g:tagbar_type_coffee = {
+\ 'kinds' : [
+\   'f:functions',
+\   'o:object'
+\ ],
+\ 'kind2scope' : {
+\  'f' : 'object',
+\   'o' : 'object'
+\},
+\ 'sro' : ".",
+\ 'ctagsbin' : 'coffeetags',
+\ 'ctagsargs' : ' ',
+\}
