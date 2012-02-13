@@ -132,7 +132,7 @@ ZSH_THEME="sporty_256"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git brew vi-mode bundler gem git-flow heroku osx rails3 ruby rvm autojump)
+plugins=(git brew vi-mode bundler gem git-flow heroku osx rails3 ruby rvm autojump vundle redis-cli taskwarrior)
 
 source $ZSH/oh-my-zsh.sh
 
