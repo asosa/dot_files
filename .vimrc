@@ -77,7 +77,7 @@ endif
 set t_Co=256
 set background=dark
 "colorscheme desert
-colorscheme wombat256
+colorscheme xoria256
 
 " Vim UI
 set wildmenu     " turn on wild menu
