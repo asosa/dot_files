@@ -204,6 +204,9 @@ if exists('&ambiwidth')
   set ambiwidth=double
 endif
 
+" バッファ保存時に行末の空白を削除する
+autocmd BufWritePre * :%s/\s\+$//ge
+
 " FuzzyFinder.vim
 let g:fuf_modesDisable = []
 nnoremap <Space>f f
