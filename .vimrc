@@ -3,6 +3,7 @@ set nocompatible
 filetype off
 set rtp+=~/.vim/vundle/
 call vundle#rc()
+Bundle 'Lokaltog/vim-easymotion'
 Bundle 'Shougo/neocomplcache'
 Bundle 'cakebaker/scss-syntax.vim'
 Bundle 'edsono/vim-matchit'
@@ -39,7 +40,7 @@ syntax on
 
 " key map
 imap <C-j> <esc>
-let mapleader=","
+let mapleader=" "
 nnoremap <silent> cy ce<C-r>0<ESC>:let@/=@1<CR>:noh<CR>
 vnoremap <silent> cy c<C-r>0<ESC>:let@/=@1<CR>:noh<CR>
 nnoremap <silent> ciy ciw<C-r>0<ESC>:let@/=@1<CR>:noh<CR>
@@ -328,3 +329,6 @@ let g:tagbar_type_coffee = {
 \ 'ctagsbin' : 'coffeetags',
 \ 'ctagsargs' : ' ',
 \}
+
+" easymotion
+let g:EasyMotion_leader_key = '<Leader>'
