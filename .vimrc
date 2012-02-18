@@ -35,23 +35,20 @@ Bundle 'Specky'
 Bundle 'grep.vim'
 Bundle 'php.vim'
 Bundle 'sudo.vim'
-filetype plugin indent on
-syntax on
 
 " key map
 imap <C-j> <esc>
 let mapleader=" "
-nnoremap <silent> cy ce<C-r>0<ESC>:let@/=@1<CR>:noh<CR>
-vnoremap <silent> cy c<C-r>0<ESC>:let@/=@1<CR>:noh<CR>
-nnoremap <silent> ciy ciw<C-r>0<ESC>:let@/=@1<CR>:noh<CR>
+nnoremap <silent> cy ciw<C-r>0<ESC>:let@/=@1<CR>:noh<CR>
 nnoremap <C-j><C-j> :nohlsearch<CR>
 set pastetoggle=<C-E>
-nnoremap gb `.zz
-nnoremap <C-g> g;
+nnoremap <C-g>p `.zz
+nnoremap <C-g><C-o> g;
+nnoremap <C-g><C-i> g,
 
 " General
-set nocompatible          " get out of horrible vi-compatible mode
 filetype on               " detect the type of file
+syntax on
 set history=10000         " How many lines of history to remember
 set cf                    " enable error files and error jumping
 filetype plugin indent on " Enable filetype-specific indenting and plugins
@@ -61,18 +58,16 @@ set nobackup
 set noswapfile
 set iminsert=0
 set imsearch=0
+set ffs=unix,dos,mac
 
 " OS dependent
 if has("win32")
-  set ffs=dos,unix,mac
   set guifont=MS_Gothic:h11:cSHIFTJIS
   set printfont=MS_Gothic:h9:cSHIFTJIS
   set printoptions=number:y
 elseif has('mac')
-  set ffs=mac,unix,dos
   set guifont=Monaco:h12
 else
-  set ffs=unix,dos,mac
   set guifontset=a14,r14,k14
 endif
 
@@ -134,6 +129,10 @@ set foldlevel=100     " Don't autofold anything (but I can still fold manually)
 set foldopen-=search  " don't open folds when you search into them
 set foldopen-=undo    " don't open folds when you undo stuff
 
+" functions
+command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
+command Rst :!rst2html.py % > /tmp/rstprev.html && open /tmp/rstprev.html
+
 " 新規ファイル保存時にディレクトリを作成する
 augroup vimrc-auto-mkdir  " {{{
   autocmd!
@@ -144,68 +143,6 @@ augroup vimrc-auto-mkdir  " {{{
     endif
   endfunction  " }}}
 augroup END  " }}}
-
-" Enconding
-set ffs=unix,dos,mac  " 改行文字
-set encoding=utf-8    " デフォルトエンコーディング
-
-" 文字コード関連
-" from ずんWiki http://www.kawaz.jp/pukiwiki/?vim#content_1_7
-" 文字コードの自動認識
-if &encoding !=# 'utf-8'
-  set encoding=japan
-  set fileencoding=japan
-endif
-if has('iconv')
-  let s:enc_euc = 'euc-jp'
-  let s:enc_jis = 'iso-2022-jp'
-  " iconvがeucJP-msに対応しているかをチェック
-  if iconv("\x87\x64\x87\x6a", 'cp932', 'eucjp-ms') ==# "\xad\xc5\xad\xcb"
-    let s:enc_euc = 'eucjp-ms'
-    let s:enc_jis = 'iso-2022-jp-3'
-  " iconvがJISX0213に対応しているかをチェック
-  elseif iconv("\x87\x64\x87\x6a", 'cp932', 'euc-jisx0213') ==# "\xad\xc5\xad\xcb"
-    let s:enc_euc = 'euc-jisx0213'
-    let s:enc_jis = 'iso-2022-jp-3'
-  endif
-  " fileencodingsを構築
-  if &encoding ==# 'utf-8'
-    let s:fileencodings_default = &fileencodings
-    let &fileencodings = s:enc_jis .','. s:enc_euc .',cp932'
-    let &fileencodings = &fileencodings .','. s:fileencodings_default
-    unlet s:fileencodings_default
-  else
-    let &fileencodings = &fileencodings .','. s:enc_jis
-    set fileencodings+=utf-8,ucs-2le,ucs-2
-    if &encoding =~# '^\(euc-jp\|euc-jisx0213\|eucjp-ms\)$'
-      set fileencodings+=cp932
-      set fileencodings-=euc-jp
-      set fileencodings-=euc-jisx0213
-      set fileencodings-=eucjp-ms
-      let &encoding = s:enc_euc
-      let &fileencoding = s:enc_euc
-    else
-      let &fileencodings = &fileencodings .','. s:enc_euc
-    endif
-  endif
-  " 定数を処分
-  unlet s:enc_euc
-  unlet s:enc_jis
-endif
-" 日本語を含まない場合は fileencoding に encoding を使うようにする
-if has('autocmd')
-  function! AU_ReCheck_FENC()
-    if &fileencoding =~# 'iso-2022-jp' && search("[^\x01-\x7e]", 'n') == 0
-      let &fileencoding=&encoding
-    endif
-  endfunction
-  autocmd BufReadPost * call AU_ReCheck_FENC()
-endif
-
-" □とか○の文字があってもカーソル位置がずれないようにする
-if exists('&ambiwidth')
-  set ambiwidth=double
-endif
 
 " バッファ保存時に行末の空白を削除する
 autocmd BufWritePre * :%s/\s\+$//ge
@@ -228,57 +165,8 @@ let Grep_Shell_Quote_Char = '"'
 let Grep_Skip_Dirs        = '.svn'
 let Grep_Skip_Dirs        = '.git'
 let Grep_Skip_Files       = '*.bak *~'
-" :Gb <args> でGrepBufferする
-command! -nargs=1 Gb :GrepBuffer <args>
 " カーソル下の単語をGrepBufferする
 nnoremap <C-g><C-b> :<C-u>GrepBuffer<Space><C-r><C-w><Enter>
-
-" FileType settings
-autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
-autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
-autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
-autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
-autocmd FileType html set filetype=xhtml
-autocmd Filetype html set omnifunc=htmlcomplete#CompleteTags
-autocmd Filetype css set omnifunc=csscomplete#CompleteCSS
-autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-
-" functions
-command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
-
-" Tell vim to remember certain things when we exit
-"  '10 : marks will be remembered for up to 10 previously edited files
-"  "100 : will save up to 100 lines for each register
-"  :20 : up to 20 lines of command-line history will be remembered
-"  % : saves and restores the buffer list
-"  n... : where to save the viminfo files
-set viminfo='10,\"100,:20,%,n~/.viminfo
-
-" when we reload, tell vim to restore the cursor to the saved position
-augroup JumpCursorOnEdit
- au!
- autocmd BufReadPost *
- \ if expand("<afile>:p:h") !=? $TEMP |
- \ if line("'\"") > 1 && line("'\"") <= line("$") |
- \ let JumpCursorOnEdit_foo = line("'\"") |
- \ let b:doopenfold = 1 |
- \ if (foldlevel(JumpCursorOnEdit_foo) > foldlevel(JumpCursorOnEdit_foo - 1)) |
- \ let JumpCursorOnEdit_foo = JumpCursorOnEdit_foo - 1 |
- \ let b:doopenfold = 2 |
- \ endif |
- \ exe JumpCursorOnEdit_foo |
- \ endif |
- \ endif
- " Need to postpone using "zv" until after reading the modelines.
- autocmd BufWinEnter *
- \ if exists("b:doopenfold") |
- \ exe "normal zv" |
- \ if(b:doopenfold > 1) |
- \ exe "+".1 |
- \ endif |
- \ unlet b:doopenfold |
- \ endif
-augroup END
 
 " SQLUtilities
 vmap <silent>sf        <Plug>SQLU_Formatter<CR>
@@ -295,14 +183,11 @@ let g:syntastic_auto_loc_list=2
 let g:quickrun_config = {}
 let g:quickrun_config['coffee'] = {'command' : 'coffee', 'exec' : ['%c -cbp %s']}
 
-" NNERDTree
+" NERDTree
 nnoremap <silent> <C-n> :NERDTreeToggle<CR>
 
 " ctrlp
 set wildignore+=*/.git/*,*/tmp/*,*/.sass-cache/*
-
-" rst
-command Rst :!rst2html.py % > /tmp/rstprev.html && open /tmp/rstprev.html
 
 " neocomplcache
 let g:acp_enableAtStartup = 0                           " Disable AutoComplPop.
@@ -332,3 +217,4 @@ let g:tagbar_type_coffee = {
 
 " easymotion
 let g:EasyMotion_leader_key = '<Leader>'
+
