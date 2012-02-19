@@ -1,0 +1,12 @@
+# ~/.tmuxinator/servers.yml
+# you can make as many tabs as you wish...
+
+project_name: servers
+project_root: ~/
+tabs:
+  - servers:
+      layout: even-vertical
+      panes:
+        - mongod run --config /usr/local/Cellar/mongodb/2.0.2-x86_64/mongod.conf
+        - redis-server /usr/local/etc/redis.conf
+        - memcached -vv
