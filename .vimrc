@@ -130,7 +130,6 @@ set foldopen-=search  " don't open folds when you search into them
 set foldopen-=undo    " don't open folds when you undo stuff
 
 " functions
-command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
 command Rst :!rst2html.py % > /tmp/rstprev.html && open /tmp/rstprev.html
 
 " 新規ファイル保存時にディレクトリを作成する
@@ -147,17 +146,20 @@ augroup END  " }}}
 " バッファ保存時に行末の空白を削除する
 autocmd BufWritePre * :%s/\s\+$//ge
 
+" 前回終了した場所に戻る
+autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif
+
 " FuzzyFinder.vim
-let g:fuf_modesDisable = []
-nnoremap <Space>f f
-nnoremap <Space>F F
-nnoremap f <Nop>
-nnoremap <silent> fb :<C-u>FufBuffer!<CR>
-nnoremap <silent> ff :<C-u>FufFile!<C-r>=expand('%:~:.')[:-1-len(expand('%:~:.:t'))]<CR><CR>
-nnoremap <silent> fm :<C-u>FufMruFile!<CR>
-nnoremap <silent> tb :<C-u>tabnew<CR>:tabmove<CR>:FufBuffer!<CR>
-nnoremap <silent> tf :<C-u>tabnew<CR>:tabmove<CR>:FufFile!<C-r>=expand('#:~:.')[:-1-len(expand('#:~:.:t'))]<CR><CR>
-nnoremap <silent> tm :<C-u>tabnew<CR>:tabmove<CR>:FufMruFile!<CR>
+"let g:fuf_modesDisable = []
+"nnoremap <Space>f f
+"nnoremap <Space>F F
+"nnoremap f <Nop>
+"nnoremap <silent> fb :<C-u>FufBuffer!<CR>
+"nnoremap <silent> ff :<C-u>FufFile!<C-r>=expand('%:~:.')[:-1-len(expand('%:~:.:t'))]<CR><CR>
+"nnoremap <silent> fm :<C-u>FufMruFile!<CR>
+"nnoremap <silent> tb :<C-u>tabnew<CR>:tabmove<CR>:FufBuffer!<CR>
+"nnoremap <silent> tf :<C-u>tabnew<CR>:tabmove<CR>:FufFile!<C-r>=expand('#:~:.')[:-1-len(expand('#:~:.:t'))]<CR><CR>
+"nnoremap <silent> tm :<C-u>tabnew<CR>:tabmove<CR>:FufMruFile!<CR>
 
 " grep.vim
 let Grep_Find_Use_Xargs = 0
@@ -217,4 +219,7 @@ let g:tagbar_type_coffee = {
 
 " easymotion
 let g:EasyMotion_leader_key = '<Leader>'
+
+" NERDCommenter
+map <Leader>x <space>c<space>
 
