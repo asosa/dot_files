@@ -4,11 +4,14 @@ filetype off
 set rtp+=~/.vim/vundle/
 call vundle#rc()
 Bundle 'Lokaltog/vim-easymotion'
+Bundle 'Lokaltog/vim-powerline'
 Bundle 'Shougo/neocomplcache'
 Bundle 'cakebaker/scss-syntax.vim'
 Bundle 'edsono/vim-matchit'
 Bundle 'groenewege/vim-less'
 Bundle 'juvenn/mustache.vim'
+Bundle 'kana/vim-operator-user'
+Bundle 'kana/vim-operator-replace'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'kien/ctrlp.vim'
 Bundle 'majutsushi/tagbar'
@@ -39,12 +42,12 @@ Bundle 'sudo.vim'
 " key map
 imap <C-j> <esc>
 let mapleader=" "
-nnoremap <silent> cy ciw<C-r>0<ESC>:let@/=@1<CR>:noh<CR>
 nnoremap <C-j><C-j> :nohlsearch<CR>
 set pastetoggle=<C-E>
 nnoremap <C-g>p `.zz
 nnoremap <C-g><C-o> g;
 nnoremap <C-g><C-i> g,
+nmap _ <Plug>(operator-replace)
 
 " General
 filetype on               " detect the type of file
