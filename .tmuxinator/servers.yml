@@ -3,6 +3,7 @@
 
 project_name: servers
 project_root: ~/
+pre: mysql.server restart
 tabs:
   - servers:
       layout: even-vertical
